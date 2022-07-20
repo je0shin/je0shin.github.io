@@ -13,7 +13,6 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Topbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
