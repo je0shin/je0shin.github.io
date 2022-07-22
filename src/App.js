@@ -1,19 +1,33 @@
 import { Box } from "@mui/system";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import "./App.css";
 import AboutSection from "./components/AboutSection";
-import ExperienceSection from "./components/ExperienceSection";
-import ProjectsSection from "./components/ProjectsSection";
+import Portfolio from "./components/PortfolioSection";
 import Topbar from "./components/Topbar";
+
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: "#E33E7F",
+    },
+    background: {
+      paper: "#EFEFEF",
+    },
+  },
+});
+
 function App() {
   return (
-    <div className="App">
-      {/* <Topbar /> */}
-      <Box sx={{ maxWidth: "75%", mx: "auto" }}>
-        <AboutSection />
-        <ProjectsSection />
-        <ExperienceSection />
-      </Box>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App" style={{ backgroundColor: "#EFEFEF" }}>
+        {/* <Topbar /> */}
+        <Box sx={{ maxWidth: "75%", mx: "auto" }}>
+          <AboutSection />
+          <Portfolio />
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 }
 
