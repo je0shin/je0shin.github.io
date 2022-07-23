@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import {
   Avatar,
   Box,
@@ -13,12 +13,12 @@ import {
   ListItemText,
   Tooltip,
   Snackbar,
+  Stack,
   Typography,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import SchoolIcon from "@mui/icons-material/School";
 import LanguageIcon from "@mui/icons-material/Language";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -26,11 +26,18 @@ import LinkIcon from "@mui/icons-material/Link";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ArticleIcon from "@mui/icons-material/Article";
-
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material/styles";
 import ProfileImg from "../assets/profile.jpg";
 import TechnicalResume from "../assets/technical_resume.pdf";
 
-export default function AboutSection() {
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
+
+const AboutSection = forwardRef((props, ref) => {
   const [phoneNoCopiedNotificationOpen, setPhoneNoCopiedNotificationOpen] =
     useState(false);
   const handleClose = (event, reason) => {
@@ -54,13 +61,20 @@ export default function AboutSection() {
   );
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ minHeight: "100vh" }} ref={ref}>
       <Divider />
-
-      <Box sx={{ p: 2 }}>
-        About
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12} lg={4}>
+      <Box sx={{ pt: 5, mt: 7 }}>
+        <Grid container>
+          <Grid
+            item
+            container
+            xs={12}
+            md={12}
+            lg={4}
+            component={Stack}
+            direction="column"
+            justifyContent="center"
+          >
             <Card sx={{ maxWidth: 400 }}>
               <CardMedia
                 component="img"
@@ -70,9 +84,22 @@ export default function AboutSection() {
               />
             </Card>
           </Grid>
-          <Grid item xs={12} md={12} lg={8}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={8}
+            component={Stack}
+            justifyContent="top"
+          >
             <Card elevation={0}>
               <List>
+                {/* Title */}
+                <ListItem>
+                  <ThemeProvider theme={theme}>
+                    <Typography variant="h5">Basic information</Typography>
+                  </ThemeProvider>
+                </ListItem>
                 {/* Name */}
                 <ListItem>
                   <ListItemAvatar>
@@ -99,25 +126,6 @@ export default function AboutSection() {
                     </Avatar>
                   </ListItemAvatar>
                   <ListItemText primary="SUNY Korea (Stony Brook University) Bachelor of Science, Computer Science" />
-                </ListItem>
-                {/* Contacts */}
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <LocalPhoneIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <Tooltip title="Copy phone number">
-                    <ListItemButton
-                      onClick={() => {
-                        navigator.clipboard.writeText("+821030131655");
-                        setPhoneNoCopiedNotificationOpen(true);
-                      }}
-                      sx={{ pl: 0, color: "#000" }}
-                    >
-                      {"+82 10 3013 1655"}
-                    </ListItemButton>
-                  </Tooltip>
                 </ListItem>
                 {/* E-mail */}
                 <ListItem>
@@ -174,15 +182,24 @@ export default function AboutSection() {
                       <EmailIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
+                </ListItem>
+                {/* Technical resume */}
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <ArticleIcon />
+                    </Avatar>
+                  </ListItemAvatar>
                   <Tooltip title="Open technical resume">
-                    <IconButton
+                    <ListItemButton
                       size="medium"
                       aria-label="close"
                       color="inherit"
                       onClick={() => window.open(TechnicalResume, "_blank")}
+                      sx={{ pl: 0 }}
                     >
-                      <ArticleIcon fontSize="small" />
-                    </IconButton>
+                      <Typography> Technical resume </Typography>
+                    </ListItemButton>
                   </Tooltip>
                 </ListItem>
               </List>
@@ -190,10 +207,31 @@ export default function AboutSection() {
           </Grid>
         </Grid>
         <Box sx={{ m: 1, p: 1 }}>
-          <Typography>
-            {
-              "Hello! This is a website quickly made to act as a portfolio for me for related purposes."
-            }
+          <ThemeProvider theme={theme}>
+            <Typography variant="h4" align="left">
+              Relevant skills
+            </Typography>
+          </ThemeProvider>
+          <Typography variant="h6" align="left">
+            Programming languages
+          </Typography>
+          <Typography variant="body1" align="left">
+            <ul>
+              <li>Java</li>
+              <li>Python</li>
+              <li>Javascript</li>
+              <li>SQL</li>
+            </ul>
+          </Typography>
+          <Typography variant="h6" align="left">
+            Frameworks and technology
+          </Typography>
+          <Typography variant="body1" align="left">
+            <ul>
+              <li>Flask</li>
+              <li>PythReact.json</li>
+              <li>MariaDB</li>
+            </ul>
           </Typography>
         </Box>
       </Box>
@@ -207,4 +245,5 @@ export default function AboutSection() {
       />
     </div>
   );
-}
+});
+export default AboutSection;
