@@ -16,8 +16,8 @@ export default function Topbar({ aboutRef, portfolioRef, experienceRef }) {
   };
 
   return (
-    <AppBar position="sticky" color="secondary">
-      <Container maxWidth="xl">
+    <AppBar position="sticky" color="secondary" sx={{ ml: 0 }}>
+      <Container maxWidth="xl" sx={{ ml: 0 }}>
         <Toolbar disableGutters>
           <Stack direction="row">
             <Button onClick={() => handleTabClick(0)}>About</Button>

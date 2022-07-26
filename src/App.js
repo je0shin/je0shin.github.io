@@ -44,7 +44,7 @@ function App() {
           portfolioRef={portfolioRef}
           experienceRef={experienceRef}
         />
-        <Box sx={{ maxWidth: "75%", mx: "auto" }}>
+        <Box sx={{ maxWidth: "80%", mx: "auto" }}>
           <AboutSection ref={aboutRef} />
           <PortfolioSection ref={portfolioRef} />
           <ExperienceSection ref={experienceRef} />
