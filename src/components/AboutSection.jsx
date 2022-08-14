@@ -229,7 +229,7 @@ const AboutSection = forwardRef((props, ref) => {
           <Typography variant="body1" align="left">
             <ul>
               <li>Flask</li>
-              <li>PythReact.json</li>
+              <li>React.js</li>
               <li>MariaDB</li>
             </ul>
           </Typography>
