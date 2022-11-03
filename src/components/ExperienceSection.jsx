@@ -70,8 +70,8 @@ const ExperienceSection = forwardRef((props, ref) => {
                 Research assistant
               </Typography>
               <Typography>
-                Used Blender to model a cabinet and a container. Also worked to
-                have an ARUCO marker detecting Android application
+                Developed an Android Application that logs the location and GNSS
+                data of the user.
               </Typography>
             </TimelineContent>
           </TimelineItem>
@@ -120,8 +120,14 @@ const ExperienceSection = forwardRef((props, ref) => {
                 Research assistant
               </Typography>
               <Typography>
-                Worked to develop an Android application that tracks and logs
-                location and GNSS data.
+                Developed an Android application that detects ARUCO marker.
+              </Typography>
+              <Typography>
+                Used Blender to model a simple container and a cabinet.
+              </Typography>
+              <Typography>
+                Developed a Python application that sends simple commands to a
+                DJI Tello drone.
               </Typography>
             </TimelineContent>
           </TimelineItem>

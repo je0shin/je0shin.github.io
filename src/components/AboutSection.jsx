@@ -230,6 +230,7 @@ const AboutSection = forwardRef((props, ref) => {
             <ul>
               <li>Flask</li>
               <li>React.js</li>
+              <li>MUI</li>
               <li>MariaDB</li>
             </ul>
           </Typography>
